@@ -1,4 +1,4 @@
-# Cucumber-Code-Snippet
+# Cucumber Code Snippet
 
 # Syntax of sample feature file
 
