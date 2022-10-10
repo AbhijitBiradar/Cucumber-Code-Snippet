@@ -64,3 +64,21 @@ public void message_displayed_Logout_Successfully() throws Throwable {
  System.out.println("LogOut Successfully");
 }
 }
+
+
+# Run Cucumber Tests in Groups with Cucumber Tags
+
+@FunctionalTest
+Feature: ECommerce Application
+
+@SmokeTest @RegressionTest
+Scenario: Successful Login
+Given This is a blank test
+
+In TestRunner mentioned tags as below
+tags= {"@SmokeTest","@RegressionTest"}
+
+
+
+
+
