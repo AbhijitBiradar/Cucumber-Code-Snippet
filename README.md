@@ -105,7 +105,11 @@ tags= {"@SmokeTest","@RegressionTest"}
 ```java 
 Example: tags= {"~@SmokeTest","~@RegressionTest"}
 
-Logically ANDing and ORing Tags
+```
+
+# Logically ANDing and ORing Tags
+
+```java
 OR Syntax : Execute all tests tagged as @SmokeTest OR @RegressionTest
 tags= {"@SmokeTest,@RegressionTest"}
 
