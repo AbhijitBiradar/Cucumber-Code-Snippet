@@ -177,8 +177,12 @@ System.out.println("User searched for Lenovo Laptop");
 
 1. **Data driven testing without Example Keyword**
 
+```java 
+
 Feature: Login Action
+
 Scenario: Successful Login with Valid Credentials
+
 Given User is on Home Page
 When User Navigate to LogIn Page
 And User enters "testuser_1" and "Test@123"
@@ -186,17 +190,23 @@ Then Message displayed Login Successfully
 
 
 @When("^User enters \"(.*)\" and \"(.*)\"$")
-public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
-driver.findElement(By.id("log")).sendKeys(username);
-driver.findElement(By.id("pwd")).sendKeys(password);
-driver.findElement(By.id("login")).click();
+    public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+    driver.findElement(By.id("log")).sendKeys(username);
+    driver.findElement(By.id("pwd")).sendKeys(password);
+    driver.findElement(By.id("login")).click();
 }
+
+```
 
 
 2. **Data driven testing using Example Keyword**
 
+```java 
+
 Feature: Login Action
+
 Scenario Outline: Successful Login with Valid Credentials
+
 Given User is on Home Page
 When User Navigate to LogIn Page
 And User enters "<username>" and "<password>"
@@ -206,17 +216,22 @@ Examples:
 | testuser_1 | Test@153 |
 | testuser_2 | Test@153 |
 
+
 @When("^User enters \"(.*)\" and \"(.*)\"$")
-public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
-driver.findElement(By.id("log")).sendKeys(username);
-driver.findElement(By.id("pwd")).sendKeys(password);
-driver.findElement(By.id("login")).click();
+    public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+    driver.findElement(By.id("log")).sendKeys(username);
+    driver.findElement(By.id("pwd")).sendKeys(password);
+    driver.findElement(By.id("login")).click();
 }
 
+```
 
 3. **Data driven testing using Data Table with List objects**
 
+```java 
+
 Scenario: Successful Login with Valid Credentials
+
 Given User is on Home Page
 When User Navigate to LogIn Page
 And User enters Credentials to LogIn
@@ -225,20 +240,24 @@ Then Message displayed Login Successfully
 
 
 @When("^User enters Credentials to LogIn$")
-public void user_enters_testuser__and_Test(DataTable usercredentials) throws Throwable {
-//Write the code to handle Data Table
-List<List<String>> data = usercredentials.raw();
-//This is to get the first data of the set (First Row + First Column)
-driver.findElement(By.id("log")).sendKeys(data.get(0).get(0));
-//This is to get the first data of the set (First Row + Second Column)
-driver.findElement(By.id("pwd")).sendKeys(data.get(0).get(1));
-driver.findElement(By.id("login")).click();
+    public void user_enters_testuser__and_Test(DataTable usercredentials) throws Throwable {
+    //Write the code to handle Data Table
+    List<List<String>> data = usercredentials.raw();
+    //This is to get the first data of the set (First Row + First Column)
+    driver.findElement(By.id("log")).sendKeys(data.get(0).get(0));
+    //This is to get the first data of the set (First Row + Second Column)
+    driver.findElement(By.id("pwd")).sendKeys(data.get(0).get(1));
+    driver.findElement(By.id("login")).click();
 }
 
+```
 
 4. **Data driven testing using Data Table with Maps objects**
 
+```java 
+
 Scenario: Successful Login with Valid Credentials
+
 Given User is on Home Page
 When User Navigate to LogIn Page
 And User enters Credentials to LogIn
@@ -248,19 +267,22 @@ And User enters Credentials to LogIn
 Then Message displayed Login Successfully
 
 @When("^User enters Credentials to LogIn$")
-public void user_enters_testuser_and_Test(DataTable usercredentials) throws Throwable {
-//Write the code to handle Data Table
-List<Map<String,String>> data = usercredentials.asMaps(String.class,String.class);
-driver.findElement(By.id("log")).sendKeys(data.get(0).get("Username"));
-driver.findElement(By.id("pwd")).sendKeys(data.get(0).get("Password"));
-driver.findElement(By.id("login")).click();
+    public void user_enters_testuser_and_Test(DataTable usercredentials) throws Throwable {
+    //Write the code to handle Data Table
+    List<Map<String,String>> data = usercredentials.asMaps(String.class,String.class);
+    driver.findElement(By.id("log")).sendKeys(data.get(0).get("Username"));
+    driver.findElement(By.id("pwd")).sendKeys(data.get(0).get("Password"));
+    driver.findElement(By.id("login")).click();
 }
 
-
+```
 
 5. **Data driven testing using Data Table with Class Objects**
 
+```java 
+
 Scenario: Successful Login with Valid Credentials
+
 Given User is on Home Page
 When User Navigate to LogIn Page
 And User enters Credentials to LogIn
@@ -272,23 +294,27 @@ Then Message displayed Login Successfully
 
 package stepDefinition;
 public class Credentials {
-private String username;
-private String password;
-public String getUsername() {
-return username;
-}
-public String getPassword() {
-return password;
-}
+    private String username;
+    private String password;
+    
+    public String getUsername() {
+        return username;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
 }
 
 
 @When("^User enters Credentials to LogIn$")
 public void user_enters_testuser_and_Test(List<Credentials> usercredentials) throws Throwable {
-//Write the code to handle Data Table
-for (Credentials credentials : usercredentials) {
-driver.findElement(By.id("log")).sendKeys(credentials.getUsername());
-driver.findElement(By.id("pwd")).sendKeys(credentials.getPassword());
-driver.findElement(By.id("login")).click();
+    for (Credentials credentials : usercredentials) {
+        driver.findElement(By.id("log")).sendKeys(credentials.getUsername());
+        driver.findElement(By.id("pwd")).sendKeys(credentials.getPassword());
+        driver.findElement(By.id("login")).click();
+    }
 }
-}
+
+
+```
