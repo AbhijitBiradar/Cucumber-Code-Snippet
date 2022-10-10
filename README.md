@@ -127,6 +127,7 @@ public class Hooks {
     public void beforeScenario(){
         System.out.println("This will run before the Scenario");
     }
+    
     @After
     public void afterScenario(){
         System.out.println("This will run after the Scenario");
@@ -151,6 +152,7 @@ public class Hooks {
     public void beforeFirst(){
         System.out.println("This will run only before the First Scenario");
     }
+    
     @After("@First")
     public void afterFirst(){
         System.out.println("This will run only after the First Scenario");
@@ -168,10 +170,12 @@ public class Hooks {
     public void beforeScenario(){
         System.out.println("This will run before the every Scenario");
     }
+    
     @After(order=0)
     public void afterScenarioFinish(){
         System.out.println("-----------------End of Scenario-----------------");
     }
+    
     @After(order=1)
     public void afterScenario(){
         System.out.println("This will run after the every Scenario");
@@ -202,14 +206,17 @@ public class BackGround_Steps {
     public void i_navigate_to_the_login_page() throws Throwable {
         System.out.println("I am at the LogIn Page");
     }
+    
     @When("^I submit username and password$")
     public void i_submit_username_and_password() throws Throwable {
         System.out.println("I Submit my Username and Password");
     }
+    
     @Then("^I should be logged in$")
     public void i_should_be_logged_in() throws Throwable {
         System.out.println("I am logged on to the website");
     }
+    
     @Given("^User search for Lenovo Laptop$")
     public void user_searched_for_Lenovo_Laptop() throws Throwable {
         System.out.println("User searched for Lenovo Laptop");
@@ -235,7 +242,7 @@ Then Message displayed Login Successfully
 
 
 @When("^User enters \"(.*)\" and \"(.*)\"$")
-    public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
     driver.findElement(By.id("log")).sendKeys(username);
     driver.findElement(By.id("pwd")).sendKeys(password);
     driver.findElement(By.id("login")).click();
@@ -263,7 +270,7 @@ Examples:
 
 
 @When("^User enters \"(.*)\" and \"(.*)\"$")
-    public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
+public void user_enters_UserName_and_Password(String username, String password) throws Throwable {
     driver.findElement(By.id("log")).sendKeys(username);
     driver.findElement(By.id("pwd")).sendKeys(password);
     driver.findElement(By.id("login")).click();
@@ -285,12 +292,9 @@ Then Message displayed Login Successfully
 
 
 @When("^User enters Credentials to LogIn$")
-    public void user_enters_testuser__and_Test(DataTable usercredentials) throws Throwable {
-    //Write the code to handle Data Table
-    List<List<String>> data = usercredentials.raw();
-    //This is to get the first data of the set (First Row + First Column)
-    driver.findElement(By.id("log")).sendKeys(data.get(0).get(0));
-    //This is to get the first data of the set (First Row + Second Column)
+public void user_enters_testuser__and_Test(DataTable usercredentials) throws Throwable {    
+    List<List<String>> data = usercredentials.raw();   
+    driver.findElement(By.id("log")).sendKeys(data.get(0).get(0));   
     driver.findElement(By.id("pwd")).sendKeys(data.get(0).get(1));
     driver.findElement(By.id("login")).click();
 }
@@ -312,8 +316,7 @@ And User enters Credentials to LogIn
 Then Message displayed Login Successfully
 
 @When("^User enters Credentials to LogIn$")
-    public void user_enters_testuser_and_Test(DataTable usercredentials) throws Throwable {
-    //Write the code to handle Data Table
+public void user_enters_testuser_and_Test(DataTable usercredentials) throws Throwable {   
     List<Map<String,String>> data = usercredentials.asMaps(String.class,String.class);
     driver.findElement(By.id("log")).sendKeys(data.get(0).get("Username"));
     driver.findElement(By.id("pwd")).sendKeys(data.get(0).get("Password"));
