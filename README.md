@@ -4,7 +4,7 @@
 
 ```java 
 
-Feature: LogIn Action Test
+Feature: Login Action Test
 
 Description: This feature will test a LogIn and LogOut functionality
 
@@ -27,8 +27,9 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions( features = "Feature",glue={"stepDefinition"})
+@CucumberOptions(features = "Feature", glue={"stepDefinition"})
 public class TestRunner {
+
 }
 
 ```
