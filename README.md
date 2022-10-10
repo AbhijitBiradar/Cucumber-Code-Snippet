@@ -25,6 +25,7 @@ package cucumberTest;
 import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+
 @RunWith(Cucumber.class)
 @CucumberOptions( features = "Feature",glue={"stepDefinition"})
 public class TestRunner {
@@ -103,9 +104,11 @@ tags= {"@SmokeTest","@RegressionTest"}
 
 ```java 
 Example: tags= {"~@SmokeTest","~@RegressionTest"}
+
 Logically ANDing and ORing Tags
 OR Syntax : Execute all tests tagged as @SmokeTest OR @RegressionTest
 tags= {"@SmokeTest,@RegressionTest"}
+
 And Syntax: Execute all tests tagged as @SmokeTest AND @RegressionTest
 tags= {"@SmokeTest","@RegressionTest"}
 
