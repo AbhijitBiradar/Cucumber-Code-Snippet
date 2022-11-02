@@ -22,12 +22,13 @@ Then Message displayed Login Successfully
 ```java 
 
 package cucumberTest;
+
 import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Feature", glue={"stepDefinition"})
+@CucumberOptions(features = "Feature", glue={"stepDefinition"}, tags= {"@SmokeTest","@RegressionTest"})
 public class TestRunner {
 
 }
@@ -39,6 +40,7 @@ public class TestRunner {
 ```java 
 
 package stepDefinition;
+
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,7 +49,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 public class Test_Steps {
+
     public static WebDriver driver;
+    
     @Given("^User is on Home Page$")
     public void user_is_on_Home_Page() throws Throwable {
          driver = new FirefoxDriver();
@@ -123,6 +127,7 @@ tags= {"@SmokeTest","@RegressionTest"}
 
 ```java 
 public class Hooks {
+
     @Before
     public void beforeScenario(){
         System.out.println("This will run before the Scenario");
@@ -148,6 +153,7 @@ When this is the second step
 Then this is the third step
 
 public class Hooks {
+
     @Before("@First")
     public void beforeFirst(){
         System.out.println("This will run only before the First Scenario");
@@ -166,6 +172,7 @@ public class Hooks {
 ```java
 
 public class Hooks {
+
     @Before(order=1)
     public void beforeScenario(){
         System.out.println("This will run before the every Scenario");
@@ -202,6 +209,7 @@ Then User basket should display with added item
 
 
 public class BackGround_Steps {
+
     @Given("^I navigate to the login page$")
     public void i_navigate_to_the_login_page() throws Throwable {
         System.out.println("I am at the LogIn Page");
